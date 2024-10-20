@@ -11,8 +11,8 @@ app.use(cors());
 const pool = new Pool({
   user: 'postgres',
   host: 'localhost',
-  database: 'local_sgn_job_test',
-  // password: '',
+  database: 'sgn_job_test',
+  password: 'Panit93',
   port: 5432,
 });
 
@@ -29,7 +29,7 @@ app.get('/api/population/:year', async (req, res) => {
     //-------------------------------------------------
     const { rows } = await pool.query(
       `SELECT "CountryName", "Year", "Population"
-       FROM local_population_and_demography
+       FROM population_and_demography
        WHERE "Year" = $1
           AND "CountryName" NOT IN (
             'World', 
